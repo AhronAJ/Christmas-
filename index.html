@@ -5,6 +5,7 @@
 <title>Merry Christmas Bal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
@@ -14,12 +15,11 @@ body {
     overflow-x: hidden;
 }
 
-/* HERO */
 .hero {
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
@@ -30,16 +30,9 @@ body {
     text-shadow: 0 0 20px red, 0 0 40px green;
 }
 
-.hero p {
-    color: #fff;
-    font-size: 1.2rem;
-    margin-top: 15px;
-}
+.hero p { color: #fff; font-size: 1.2rem; margin-top: 15px; }
 
-/* CARD */
-.message-section {
-    padding: 80px 15px;
-}
+.message-section { padding: 80px 15px; }
 
 .love-card {
     background: rgba(255,255,255,0.18);
@@ -50,13 +43,8 @@ body {
     box-shadow: 0 0 50px rgba(255,215,0,0.6);
 }
 
-.love-card p {
-    font-size: 1.15rem;
-    line-height: 1.9;
-    text-align: center;
-}
+.love-card p { font-size: 1.15rem; line-height: 1.9; text-align: center; }
 
-/* IMAGES */
 .inner-gallery img {
     width: 100%;
     border-radius: 20px;
@@ -65,11 +53,8 @@ body {
     box-shadow: 0 0 18px rgba(0,0,0,0.5);
 }
 
-.inner-gallery img:hover {
-    transform: scale(1.07);
-}
+.inner-gallery img:hover { transform: scale(1.07); }
 
-/* HEARTS */
 .heart {
     position: fixed;
     bottom: -10px;
@@ -85,7 +70,6 @@ body {
 </head>
 
 <body>
-
 <section class="hero">
     <div class="container">
         <h1>🎄 Merry Christmas bal 🎄</h1>
@@ -97,37 +81,26 @@ body {
 <div class="container">
 <div class="row justify-content-center">
 <div class="col-lg-8">
-
 <div class="love-card">
-
 <p>
 Merry Christmas bebe ko iloveyou somuch po mwamwa ❤️<br><br>
-
-My wish on this Christmas is magkaroon ka ng maganda at malusog na kalusugan,
-maging maayos ka palagi at di magkaroon ng sakit bal.
-Iloveyou somuch po mwamwaaa 🥹<br><br>
-
-Sobrang saya ng bawat Christmas ko dahil sayo bal,
-mahal na mahal kita palagi alam mo yan hehe 💕<br><br>
-
-Thank you sa lahat bal, sobrang thankful ako sa Diyos
-dahil ikaw yung taong handa kong pakasalan 💍<br><br>
-
+My wish on this Christmas is magkaroon ka ng maganda at malusog na kalusugan, maging maayos ka palagi at di magkaroon ng sakit bal. Iloveyou somuch po mwamwaaa 🥹<br><br>
+Sobrang saya ng bawat Christmas ko dahil sayo bal, mahal na mahal kita palagi alam mo yan hehe 💕<br><br>
+Thank you sa lahat bal, sobrang thankful ako sa Diyos dahil ikaw yung taong handa kong pakasalan 💍<br><br>
 You're my world, you're my everything ❤️
 </p>
 
 <h5 class="text-center mt-5 mb-4">📸 Our Memories</h5>
-
 <div class="row inner-gallery g-3">
-    <div class="col-6 col-md-4">
-        <img src="images/pic1.jpg" onclick="showImage(this.src)" data-bs-toggle="modal" data-bs-target="#imgModal">
-    </div>
-    <div class="col-6 col-md-4">
-        <img src="images/pic2.jpg" onclick="showImage(this.src)" data-bs-toggle="modal" data-bs-target="#imgModal">
-    </div>
-    <div class="col-6 col-md-4">
-        <img src="images/pic3.jpg" onclick="showImage(this.src)" data-bs-toggle="modal" data-bs-target="#imgModal">
-    </div>
+  <div class="col-6 col-md-4">
+    <img src="https://i.ibb.co/5GJQGzz/pic1.jpg" onclick="showImage(this.src)" data-bs-toggle="modal" data-bs-target="#imgModal">
+  </div>
+  <div class="col-6 col-md-4">
+    <img src="https://i.ibb.co/NLqGqRS/pic2.jpg" onclick="showImage(this.src)" data-bs-toggle="modal" data-bs-target="#imgModal">
+  </div>
+  <div class="col-6 col-md-4">
+    <img src="https://i.ibb.co/VJbVhFJ/pic3.jpg" onclick="showImage(this.src)" data-bs-toggle="modal" data-bs-target="#imgModal">
+  </div>
 </div>
 
 </div>
@@ -148,13 +121,10 @@ You're my world, you're my everything ❤️
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-function showImage(src){
-    document.getElementById("modalImage").src = src;
-}
+function showImage(src){ document.getElementById("modalImage").src = src; }
 
-const colors = ["red","gold","pink"];
+const colors=["red","gold","pink"];
 for(let i=0;i<35;i++){
     let h=document.createElement("div");
     h.className="heart";
@@ -165,6 +135,5 @@ for(let i=0;i<35;i++){
     document.body.appendChild(h);
 }
 </script>
-
 </body>
 </html>
