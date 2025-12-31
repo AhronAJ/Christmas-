@@ -1,140 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Merry Christmas Bal</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para sa Bebe Ko 2026</title>
+    <style>
+        :root {
+            --soft-pink: #ff85a1;
+            --hot-pink: #ff4d6d;
+            --gold: #ffb700;
+            --dark: #120107;
+        }
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        body, html {
+            margin: 0; padding: 0;
+            background-color: var(--dark);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-<style>
-body {
-    background: linear-gradient(180deg, #0f6a2f, #b30000, #ffcc66);
-    font-family: 'Segoe UI', sans-serif;
-    overflow-x: hidden;
-}
+        canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
 
-.hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+        .content { position: relative; z-index: 10; width: 100%; }
 
-.hero h1 {
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    color: gold;
-    font-weight: 700;
-    text-shadow: 0 0 20px red, 0 0 40px green;
-}
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
 
-.hero p { color: #fff; font-size: 1.2rem; margin-top: 15px; }
+        /* --- STYLES FOR CONTENT --- */
+        .title-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 30px;
+            border: 2px solid var(--soft-pink);
+            box-shadow: 0 0 20px var(--hot-pink);
+            margin-bottom: 20px;
+            width: 85%;
+        }
 
-.message-section { padding: 80px 15px; }
+        .name-sparkle {
+            font-size: 2.2rem;
+            color: var(--gold);
+            text-shadow: 0 0 10px var(--gold);
+            font-weight: bold;
+        }
 
-.love-card {
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(14px);
-    border-radius: 30px;
-    padding: 45px;
-    color: white;
-    box-shadow: 0 0 50px rgba(255,215,0,0.6);
-}
+        /* Happiness Meter */
+        .meter-container {
+            width: 80%;
+            background: #444;
+            border-radius: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+            border: 1px solid var(--soft-pink);
+        }
+        .meter-fill {
+            width: 100%;
+            height: 25px;
+            background: linear-gradient(90deg, var(--soft-pink), var(--hot-pink));
+            animation: load 3s ease-in-out;
+        }
+        @keyframes load { 0% { width: 0%; } 100% { width: 100%; } }
 
-.love-card p { font-size: 1.15rem; line-height: 1.9; text-align: center; }
+        /* Compliment Cards */
+        .compliment-box {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            border-left: 5px solid var(--gold);
+            text-align: left;
+            transition: 0.3s;
+        }
+        .compliment-box:active { transform: scale(0.95); background: rgba(255, 255, 255, 0.2); }
 
-.inner-gallery img {
-    width: 100%;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.4s;
-    box-shadow: 0 0 18px rgba(0,0,0,0.5);
-}
+        /* Kilig Button */
+        .kilig-btn {
+            background: var(--hot-pink);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            cursor: pointer;
+            margin-top: 20px;
+        }
 
-.inner-gallery img:hover { transform: scale(1.07); }
+        /* Marquee */
+        .marquee {
+            background: var(--gold);
+            color: black;
+            padding: 10px 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 150%;
+            transform: rotate(-2deg);
+            margin: 40px 0;
+        }
 
-.heart {
-    position: fixed;
-    bottom: -10px;
-    font-size: 22px;
-    animation: floatUp linear infinite;
-}
+        /* Grid for Promises */
+        .promise-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
+        }
+        .promise-card {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            font-size: 0.85rem;
+        }
 
-@keyframes floatUp {
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-120vh); opacity: 0; }
-}
-</style>
+        .emoji-float { font-size: 2rem; margin: 10px; }
+
+    </style>
 </head>
-
 <body>
-<section class="hero">
-    <div class="container">
-        <h1>🎄 Merry Christmas bal 🎄</h1>
-        <p>Scroll down bebe ko ❤️</p>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="content">
+        <section>
+            <div class="title-box">
+                <h2 style="margin:0; opacity: 0.8;">Hello, 2026!</h2>
+                <div class="name-sparkle">Angel Mae Datiles</div>
+                <p>My Bebe, My Angel, My Forever.</p>
+            </div>
+            
+            <p>Angel's Happiness Level with Me:</p>
+            <div class="meter-container">
+                <div class="meter-fill"></div>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--gold);">Error: Too much love to calculate! ∞</p>
+
+            <div class="emoji-float">✨ 🧚‍♀️ ✨</div>
+            <p style="font-style: italic; font-size: 0.9rem;">"Swipe down for more surprises..."</p>
+        </section>
+
+        <section id="reasons">
+            <h2 style="color: var(--soft-pink);">Things that make me smile about you:</h2>
+            <p style="font-size: 0.8rem; opacity: 0.6;">(Click bawat isa!)</p>
+            
+            <div class="compliment-box">
+                <strong>01. Yung Tawa Mo</strong>
+                <div style="font-size: 0.85rem; margin-top: 5px; color: #ddd;">Best music sa pandinig ko, mas maganda pa sa kahit anong kanta.</div>
+            </div>
+            <div class="compliment-box">
+                <strong>02. Yung Pag-aalaga Mo</strong>
+                <div style="font-size: 0.85rem; margin-top: 5px; color: #ddd;">Kahit makulit ako, 'di ka nagsasawang intindihin ako.</div>
+            </div>
+            <div class="compliment-box">
+                <strong>03. Your Eyes</strong>
+                <div style="font-size: 0.85rem; margin-top: 5px; color: #ddd;">Doon ko nakikita yung future nating dalawa.</div>
+            </div>
+            <div class="compliment-box">
+                <strong>04. Your Strength</strong>
+                <div style="font-size: 0.85rem; margin-top: 5px; color: #ddd;">I'm so proud of how you handle everything. You're amazing, Angel.</div>
+            </div>
+        </section>
+
+        <div class="marquee">
+            <marquee scrollamount="10">ANGEL MAE DATILES • I LOVE YOU • HAPPY NEW YEAR • MY BEBE • 2026 NATIN 'TO • NO SOUND BUT LOTS OF LOVE •</marquee>
+        </div>
+
+        <section>
+            <h2 style="color: var(--gold);">Our 2026 Goals</h2>
+            <div class="promise-grid">
+                <div class="promise-card">🍕<br>More food trips (no "kahit saan" anymore!)</div>
+                <div class="promise-card">✈️<br>New places to visit together.</div>
+                <div class="promise-card">📸<br>Fill up your phone storage with our photos.</div>
+                <div class="promise-card">💪<br>Healthy and happy relationship always.</div>
+            </div>
+
+            <button class="kilig-btn" onclick="spawnHearts()">CLICK FOR KILIG! ❤️</button>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">Wait for the hearts to fall!</p>
+
+            <div style="margin-top: 50px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 20px;">
+                <p>"Angel Mae, sa bawat pagputok ng firework sa labas, sana maalala mo na ganun din kasaya ang puso ko kasi ikaw ang kasama ko sa bagong taon."</p>
+                <p style="color: var(--hot-pink); font-weight: bold;">- Your Bebe Who Loves You Most</p>
+            </div>
+        </section>
     </div>
-</section>
 
-<section class="message-section">
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-lg-8">
-<div class="love-card">
-<p>
-Merry Christmas bebe ko iloveyou somuch po mwamwa ❤️<br><br>
-My wish on this Christmas is magkaroon ka ng maganda at malusog na kalusugan, maging maayos ka palagi at di magkaroon ng sakit bal. Iloveyou somuch po mwamwaaa 🥹<br><br>
-Sobrang saya ng bawat Christmas ko dahil sayo bal, mahal na mahal kita palagi alam mo yan hehe 💕<br><br>
-Thank you sa lahat bal, sobrang thankful ako sa Diyos dahil ikaw yung taong handa kong pakasalan 💍<br><br>
-You're my world, you're my everything ❤️
-</p>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
-<h5 class="text-center mt-5 mb-4">📸 Our Memories</h5>
-<div class="row inner-gallery g-3">
-  <div class="col-6 col-md-4">
-    <img src="https://i.ibb.co/wNP5HxRS/image.jpg" onclick="showImage(this.src)" data-bs-toggle="modal" data-bs-target="#imgModal">
-  </div>
-  <div class="col-6 col-md-4">
-    <img src="https://i.ibb.co/xbRxm5J/image.jpg" onclick="showImage(this.src)" data-bs-toggle="modal" data-bs-target="#imgModal">
-  </div>
-  <div class="col-6 col-md-4">
-    <img src="https://i.ibb.co/ymCM9W27/image.jpg" onclick="showImage(this.src)" data-bs-toggle="modal" data-bs-target="#imgModal">
-  </div>
-</div>
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
 
-</div>
-</div>
-</div>
-</div>
-</section>
+        class Heart {
+            constructor(x, y, isBig) {
+                this.x = x;
+                this.y = y;
+                this.size = isBig ? Math.random() * 30 + 20 : Math.random() * 10 + 5;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 4 - 2;
+                this.opacity = 1;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.opacity -= 0.005;
+            }
+            draw() {
+                ctx.globalAlpha = this.opacity;
+                ctx.font = this.size + 'px serif';
+                ctx.fillText('❤️', this.x, this.y);
+            }
+        }
 
-<!-- MODAL -->
-<div class="modal fade" id="imgModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content bg-dark">
-      <div class="modal-body p-0">
-        <img id="modalImage" class="w-100 rounded">
-      </div>
-    </div>
-  </div>
-</div>
+        function spawnHearts() {
+            for(let i=0; i<30; i++) {
+                particles.push(new Heart(Math.random() * canvas.width, -50, true));
+            }
+        }
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        function handleParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].opacity <= 0 || particles[i].y > canvas.height) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+        }
 
-<script>
-function showImage(src){ document.getElementById("modalImage").src = src; }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Constant light snow/sparks
+            if(Math.random() < 0.1) {
+                particles.push(new Heart(Math.random() * canvas.width, -20, false));
+            }
+            handleParticles();
+            requestAnimationFrame(animate);
+        }
 
-const colors=["red","gold","pink"];
-for(let i=0;i<35;i++){
-    let h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="❤️";
-    h.style.left=Math.random()*100+"vw";
-    h.style.animationDuration=(4+Math.random()*6)+"s";
-    h.style.color=colors[Math.floor(Math.random()*colors.length)];
-    document.body.appendChild(h);
-}
-</script>
+        // Tap on screen to burst
+        window.addEventListener('touchstart', (e) => {
+            for(let i=0; i<10; i++) {
+                particles.push(new Heart(e.touches[0].clientX, e.touches[0].clientY, true));
+            }
+        });
+
+        init();
+        animate();
+        window.addEventListener('resize', init);
+    </script>
 </body>
 </html>
