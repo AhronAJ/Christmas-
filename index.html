@@ -3,296 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zambal Lingua Pro</title>
+    <title>ilgo Sambal Dictionary</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4e54c8;
-            --secondary: #8f94fb;
-            --success: #00b894;
-            --danger: #d63031;
-            --light: #f1f2f6;
-            --dark: #2d3436;
-            --white: #ffffff;
+            --header-blue: #4A7C94;
+            --bg-wood: #d3b89c; /* Placeholder for wood texture */
+            --card-white: #ffffff;
+            --text-dark: #2d3436;
+            --nav-icon-color: #888;
+            --nav-icon-active: #4A7C94;
         }
 
-        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: all 0.3s ease; }
+        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: 0.3s; }
 
         body {
             margin: 0;
-            background: var(--light);
-            color: var(--dark);
+            background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             min-height: 100vh;
         }
 
-        .app-container {
+        .phone-frame {
             width: 100%;
-            max-width: 450px;
-            background: var(--white);
-            min-height: 100vh;
+            max-width: 414px;
+            height: 100vh;
+            background-color: var(--bg-wood);
+            /* Add wood texture here if available, e.g., background-image: url('wood.jpg'); */
+            background-size: cover;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.2);
         }
 
-        /* HEADER */
+        /* Header */
         .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 40px 20px;
-            color: white;
+            background-color: var(--header-blue);
+            padding: 20px;
             text-align: center;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-        }
-
-        .header h1 { margin: 0; font-size: 24px; font-weight: 700; }
-        .header p { margin: 5px 0 0; font-size: 14px; opacity: 0.9; }
-
-        /* CONTENT AREA */
-        .content { padding: 20px; flex: 1; }
-
-        /* MENU BUTTONS */
-        .menu-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
-        
-        .nav-card {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .nav-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .nav-card i { font-size: 40px; display: block; margin-bottom: 10px; }
-        .nav-card h3 { margin: 0; color: var(--primary); }
-
-        /* DICTIONARY UI */
-        .search-box {
-            position: sticky;
-            top: 10px;
-            background: white;
-            padding: 10px 0;
-            z-index: 10;
-        }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid #ddd;
-            font-size: 16px;
-            outline: none;
-            background: #f9f9f9;
-        }
-
-        input:focus { border-color: var(--primary); background: white; }
-
-        .word-card {
-            background: #fff;
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 10px;
-            border-left: 5px solid var(--primary);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-        }
-
-        .zambal-text { color: var(--primary); font-weight: 700; font-size: 18px; display: block; }
-        .trans-text { font-size: 14px; color: #636e72; margin-top: 5px; }
-
-        /* QUIZ UI */
-        .quiz-container { text-align: center; padding: 20px 0; }
-        .question-box {
-            background: #f1f2f6;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .btn-main {
-            background: var(--primary);
             color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 2;
+        }
+        .header .logo { font-size: 2rem; margin-bottom: 5px; }
+        .header .app-name { font-weight: 700; margin: 0; font-size: 1.5rem; }
+        .header .app-sub { font-size: 0.9rem; opacity: 0.8; margin: 0; }
+
+        /* Content */
+        .content { padding: 20px; flex: 1; overflow-y: auto; z-index: 1; }
+
+        /* Home Screen */
+        .home-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .home-card {
+            background: var(--card-white);
+            padding: 20px;
             border-radius: 15px;
-            font-size: 16px;
-            font-weight: 600;
+            text-align: center;
             cursor: pointer;
-            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        .home-card i { font-size: 2rem; color: var(--header-blue); margin-bottom: 10px; }
+        .home-card p { margin: 0; font-weight: 600; color: var(--text-dark); }
 
-        .btn-back { background: none; color: #b2bec3; font-size: 14px; margin-top: 20px; border: none; cursor: pointer; }
+        /* Dictionary Screen */
+        .search-bar { background: white; padding: 10px 15px; border-radius: 10px; display: flex; align-items: center; margin-bottom: 15px; }
+        .search-bar input { border: none; outline: none; width: 100%; margin-left: 10px; font-size: 1rem; }
+        .word-card { background: white; padding: 15px; border-radius: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .word-card h3 { margin: 0; color: var(--text-dark); font-size: 1.1rem; }
+        .word-card p { margin: 5px 0 0; font-size: 0.8rem; color: #666; }
+        .speaker-icon { color: var(--header-blue); font-size: 1.2rem; cursor: pointer; }
 
-        .feedback {
-            margin-top: 15px;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: 600;
-            display: none;
+        /* Translate Screen */
+        .trans-container { background: white; padding: 20px; border-radius: 15px; margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .trans-label { font-size: 0.9rem; color: var(--header-blue); font-weight: 600; display: block; margin-bottom: 10px; }
+        .trans-input { width: 100%; border: none; font-size: 1.1rem; outline: none; background: transparent; resize: none; }
+        .trans-btn { background: var(--header-blue); color: white; border: none; padding: 12px; width: 100%; border-radius: 10px; font-weight: 600; cursor: pointer; margin: 10px 0; }
+
+        /* Quiz Screen */
+        .score-header { background: var(--header-blue); color: white; padding: 15px; text-align: center; font-weight: 700; border-radius: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; }
+        .quiz-q { font-size: 1.2rem; font-weight: 600; text-align: center; margin-bottom: 30px; color: var(--text-dark); }
+        .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .opt-btn { background: white; padding: 15px; border-radius: 10px; border: none; font-weight: 500; cursor: pointer; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .opt-btn.active { background: var(--header-blue); color: white; }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            background: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            z-index: 2;
         }
+        .nav-item { text-align: center; color: var(--nav-icon-color); cursor: pointer; flex: 1; }
+        .nav-item.active { color: var(--nav-icon-active); }
+        .nav-item i { font-size: 1.4rem; display: block; margin-bottom: 2px; }
+        .nav-item span { font-size: 0.7rem; }
 
         .hidden { display: none; }
-
-        /* ANIMATIONS */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .fade { animation: fadeIn 0.4s ease forwards; }
-
+        .fade-in { animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-<div class="app-container">
-    <div class="header">
-        <h1 id="screen-title">Zambal Lingua Pro</h1>
-        <p id="screen-sub">Learn Tina Sambal Everyday</p>
+<div class="phone-frame">
+    <div class="header" id="app-header">
+        <div class="logo">🌊</div>
+        <h1 class="app-name">ilgo</h1>
+        <p class="app-sub">Sambal Dictionary</p>
     </div>
 
     <div class="content">
-        
-        <div id="menu-screen" class="fade">
-            <div class="menu-grid">
-                <div class="nav-card" onclick="showScreen('dict')">
-                    <i>📖</i>
-                    <h3>Dictionary</h3>
-                    <small>Search 1,000+ Words</small>
-                </div>
-                <div class="nav-card" onclick="showScreen('quiz')">
-                    <i>🎮</i>
-                    <h3>Quiz Game</h3>
-                    <small>Test your knowledge</small>
-                </div>
+        <div id="screen-home" class="fade-in">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="color: var(--text-dark); margin: 0;">Maganda a aldew!</h2>
+                <p style="color: #666; margin: 5px 0 0;">Good day!</p>
             </div>
-            <p style="text-align: center; color: #999; margin-top: 30px; font-size: 12px;">Version 2.0 • Created for Zambal Learner</p>
-        </div>
-
-        <div id="dict-screen" class="hidden fade">
-            <div class="search-box">
-                <input type="text" id="searchBar" placeholder="Search Tagalog, English, or Zambal..." onkeyup="runSearch()">
-            </div>
-            <div id="wordList" style="margin-top: 10px;"></div>
-            <button class="btn-back" onclick="showScreen('menu')">← Back to Menu</button>
-        </div>
-
-        <div id="quiz-screen" class="hidden fade">
-            <div class="quiz-container">
-                <div class="question-box">
-                    <small style="color: var(--primary); display: block; margin-bottom: 10px;">Translate to Zambal</small>
-                    <span id="q-word">...</span>
+            <div class="home-grid">
+                <div class="home-card" onclick="navTo('dict')">
+                    <i class="fas fa-book"></i>
+                    <p>Dictionary</p>
                 </div>
-                <input type="text" id="quizInput" placeholder="Type your answer here...">
-                <button class="btn-main" onclick="checkQuiz()">Check Answer</button>
-                <div id="feedbackBox" class="feedback"></div>
-                <button id="nextBtn" class="btn-main hidden" style="background: var(--success);" onclick="loadQuestion()">Next Question</button>
-                <button class="btn-back" onclick="showScreen('menu')">End Quiz</button>
+                <div class="home-card" onclick="navTo('trans')">
+                    <i class="fas fa-language"></i>
+                    <p>Translate</p>
+                </div>
+                <div class="home-card" onclick="navTo('quiz')">
+                    <i class="fas fa-gamepad"></i>
+                    <p>Daily Quiz</p>
+                </div>
+                <div class="home-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>Cultural Tip</p>
+                </div>
             </div>
         </div>
 
+        <div id="screen-dict" class="hidden fade-in">
+            <div class="search-bar">
+                <i class="fas fa-search" style="color: #888;"></i>
+                <input type="text" id="dictSearch" placeholder="Search Sambal..." onkeyup="searchDict()">
+            </div>
+            <div id="dictList">
+                </div>
+        </div>
+
+        <div id="screen-trans" class="hidden fade-in">
+            <div class="trans-container">
+                <span class="trans-label">Sambal</span>
+                <textarea class="trans-input" rows="3" placeholder="Type here..." id="transInput"></textarea>
+            </div>
+            <button class="trans-btn" onclick="liveTranslate()">Translate</button>
+            <div class="trans-container">
+                <span class="trans-label">English / Tagalog</span>
+                <textarea class="trans-input" rows="3" placeholder="Translation..." id="transOutput" readonly></textarea>
+            </div>
+        </div>
+
+        <div id="screen-quiz" class="hidden fade-in">
+            <div class="score-header">
+                <span>Score</span>
+                <span id="score-display">0</span>
+            </div>
+            <p class="quiz-q" id="q-text">What does 'Baley' mean?</p>
+            <div class="quiz-options" id="quiz-options">
+                <button class="opt-btn" onclick="checkQuiz(this, false)">Mountain</button>
+                <button class="opt-btn" id="correct-opt" onclick="checkQuiz(this, true)">House / Bahay</button>
+                <button class="opt-btn" onclick="checkQuiz(this, false)">River</button>
+                <button class="opt-btn" onclick="checkQuiz(this, false)">Friend / Ilog</button>
+            </div>
+            <div id="quiz-feedback" style="text-align: center; margin-top: 20px; font-weight: bold; min-height: 24px;"></div>
+            <button class="trans-btn hidden" id="next-btn" onclick="nextQuestion()" style="margin-top: 20px;">Next Question</button>
+        </div>
+
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active" id="nav-home" onclick="navTo('home')">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" id="nav-dict" onclick="navTo('dict')">
+            <i class="fas fa-book"></i>
+            <span>Dictionary</span>
+        </div>
+        <div class="nav-item" id="nav-trans" onclick="navTo('trans')">
+            <i class="fas fa-language"></i>
+            <span>Translate</span>
+        </div>
+        <div class="nav-item" id="nav-quiz" onclick="navTo('quiz')">
+             <i class="fas fa-gamepad"></i>
+            <span>Quiz</span>
+        </div>
     </div>
 </div>
 
 <script>
-    // DATASET (DITO MO DAGDAGAN ANG MGA WORDS)
     const database = [
-        {z: "Maabig a abak", t: "Magandang umaga", e: "Good morning"},
-        {z: "Maabig a yabi", t: "Magandang gabi", e: "Good evening"},
-        {z: "Ranom", t: "Tubig", e: "Water"},
-        {z: "Mangan", t: "Kain", e: "Eat"},
-        {z: "Malinggas", t: "Maganda", e: "Beautiful"},
-        {z: "Masanting", t: "Gwapo", e: "Handsome"},
-        {z: "Abay", t: "Bahay", e: "House"},
-        {z: "Kaluguran", t: "Kaibigan", e: "Friend"},
+        {z: "Mangan ta", t: "Kumain tayo", e: "Let's eat"},
         {z: "Salamat", t: "Salamat", e: "Thank you"},
-        {z: "Hahay ka?", t: "Kumusta ka?", e: "How are you?"},
-        {z: "Melat", t: "Kanin", e: "Cooked Rice"},
-        {z: "Laman", t: "Ulam", e: "Viand"},
-        {z: "Misa", t: "Isa", e: "One"},
-        {z: "Rwa", t: "Dalawa", e: "Two"},
-        {z: "Tlo", t: "Tatlo", e: "Three"},
-        {z: "Apat", t: "Apat", e: "Four"},
-        {z: "Lima", t: "Lima", e: "Five"}
+        {z: "Kumusta kaw?", t: "Kumusta ka?", e: "How are you?"},
+        {z: "Maples ka", t: "Malakas ka", e: "You are strong"},
+        {z: "Maganda a aldew", t: "Magandang araw", e: "Good day"},
+        {z: "Ma-inam", t: "Masarap", e: "Delicious"},
+        {z: "Baley", t: "Bahay", e: "House"},
+        {z: "Ranom", t: "Tubig", e: "Water"}
     ];
 
-    let currentQ = {};
+    let score = 0;
+    let currentQuizItem = null;
 
-    function showScreen(screen) {
-        document.getElementById('menu-screen').classList.add('hidden');
-        document.getElementById('dict-screen').classList.add('hidden');
-        document.getElementById('quiz-screen').classList.add('hidden');
+    function navTo(screenId) {
+        // Hide all screens
+        ['home', 'dict', 'trans', 'quiz'].forEach(id => {
+            document.getElementById('screen-' + id).classList.add('hidden');
+            document.getElementById('nav-' + id).classList.remove('active');
+        });
+        
+        // Show selected
+        document.getElementById('screen-' + screenId).classList.remove('hidden');
+        document.getElementById('nav-' + screenId).classList.add('active');
 
-        if(screen === 'menu') {
-            document.getElementById('menu-screen').classList.remove('hidden');
-            updateHeader("Zambal Lingua Pro", "Learn Tina Sambal Everyday");
-        } else if(screen === 'dict') {
-            document.getElementById('dict-screen').classList.remove('hidden');
-            updateHeader("Dictionary", "Fast Search Dictionary");
-            runSearch();
-        } else if(screen === 'quiz') {
-            document.getElementById('quiz-screen').classList.remove('hidden');
-            updateHeader("Quiz Mode", "Challenge Yourself");
-            loadQuestion();
+        // Screen-specific actions
+        if(screenId === 'dict') searchDict();
+        if(screenId === 'quiz') nextQuestion();
+
+        // Update header based on screen
+        const headerTitle = document.querySelector('.header .app-name');
+        const headerSub = document.querySelector('.header .app-sub');
+        if(screenId === 'home') {
+            headerTitle.innerText = 'ilgo'; headerSub.innerText = 'Sambal Dictionary';
+        } else if (screenId === 'dict') {
+            headerTitle.innerText = 'Dictionary'; headerSub.innerText = 'Search Words';
+        } else if (screenId === 'trans') {
+             headerTitle.innerText = 'Translate'; headerSub.innerText = 'Sambal to English/Tagalog';
+        } else if (screenId === 'quiz') {
+             headerTitle.innerText = 'Quiz'; headerSub.innerText = 'Test Your Knowledge';
         }
     }
 
-    function updateHeader(title, sub) {
-        document.getElementById('screen-title').innerText = title;
-        document.getElementById('screen-sub').innerText = sub;
-    }
-
-    // SEARCH LOGIC
-    function runSearch() {
-        const query = document.getElementById('searchBar').value.toLowerCase();
-        const list = document.getElementById('wordList');
+    function searchDict() {
+        const query = document.getElementById('dictSearch').value.toLowerCase();
+        const list = document.getElementById('dictList');
         list.innerHTML = "";
 
-        const filtered = database.filter(w => 
-            w.z.toLowerCase().includes(query) || 
-            w.t.toLowerCase().includes(query) || 
-            w.e.toLowerCase().includes(query)
-        );
-
-        filtered.forEach(item => {
+        database.filter(i => i.z.toLowerCase().includes(query)).forEach(item => {
             list.innerHTML += `
-                <div class="word-card fade">
-                    <span class="zambal-text">${item.z}</span>
-                    <div class="trans-text">Tagalog: ${item.t} | English: ${item.e}</div>
+                <div class="word-card">
+                    <div>
+                        <h3>${item.z}</h3>
+                        <p>${item.e} / ${item.t}</p>
+                    </div>
+                    <i class="fas fa-volume-up speaker-icon"></i>
                 </div>
             `;
         });
     }
 
-    // QUIZ LOGIC
-    function loadQuestion() {
-        currentQ = database[Math.floor(Math.random() * database.length)];
-        document.getElementById('q-word').innerText = currentQ.t;
-        document.getElementById('quizInput').value = "";
-        document.getElementById('feedbackBox').style.display = "none";
-        document.getElementById('nextBtn').classList.add('hidden');
-    }
+    function liveTranslate() {
+        const input = document.getElementById('transInput').value.toLowerCase().trim();
+        const output = document.getElementById('transOutput');
+        const found = database.find(i => i.z.toLowerCase() === input);
 
-    function checkQuiz() {
-        const userAns = document.getElementById('quizInput').value.trim().toLowerCase();
-        const box = document.getElementById('feedbackBox');
-        box.style.display = "block";
-
-        if(userAns === currentQ.z.toLowerCase()) {
-            box.innerText = "Excellent! Correct Answer.";
-            box.style.background = "#d4edda";
-            box.style.color = "#155724";
-            document.getElementById('nextBtn').classList.remove('hidden');
+        if(found) {
+            output.value = `${found.e} (English)\n${found.t} (Tagalog)`;
         } else {
-            box.innerText = "Oops! The correct word is: " + currentQ.z;
-            box.style.background = "#f8d7da";
-            box.style.color = "#721c24";
-            document.getElementById('nextBtn').classList.remove('hidden');
+            output.value = "Translation not found.";
         }
     }
+
+    function nextQuestion() {
+        document.getElementById('quiz-feedback').innerText = "";
+        document.getElementById('next-btn').classList.add('hidden');
+        document.querySelectorAll('.opt-btn').forEach(b => {
+            b.classList.remove('active');
+            b.disabled = false;
+        });
+
+        currentQuizItem = database[Math.floor(Math.random() * database.length)];
+        document.getElementById('q-text').innerText = `What does '${currentQuizItem.z}' mean?`;
+
+        const correctAnswer = `${currentQuizItem.e} / ${currentQuizItem.t}`;
+        let options = [correctAnswer];
+        
+        while(options.length < 4) {
+            let randomItem = database[Math.floor(Math.random() * database.length)];
+            let randomAnswer = `${randomItem.e} / ${randomItem.t}`;
+            if(!options.includes(randomAnswer)) {
+                options.push(randomAnswer);
+            }
+        }
+        
+        options.sort(() => Math.random() - 0.5);
+        
+        const optionsContainer = document.getElementById('quiz-options');
+        optionsContainer.innerHTML = "";
+        options.forEach(opt => {
+            const isCorrect = opt === correctAnswer;
+            optionsContainer.innerHTML += `<button class="opt-btn" onclick="checkQuiz(this, ${isCorrect})">${opt}</button>`;
+        });
+    }
+
+    function checkQuiz(btn, isCorrect) {
+        const feedback = document.getElementById('quiz-feedback');
+        document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+        
+        btn.classList.add('active');
+        if(isCorrect) {
+            feedback.innerText = "✅ Correct!";
+            feedback.style.color = "green";
+            score++;
+            document.getElementById('score-display').innerText = score;
+        } else {
+            feedback.innerText = `❌ Incorrect. The answer is: ${currentQuizItem.e} / ${currentQuizItem.t}`;
+            feedback.style.color = "red";
+        }
+        document.getElementById('next-btn').classList.remove('hidden');
+    }
+
+    // Initialize
+    navTo('home');
+    searchDict(); // Pre-load dictionary
 </script>
 
 </body>
